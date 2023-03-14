@@ -6,4 +6,12 @@ class Login extends CI_Controller {
 	{
 		$this->load->view('login_view');
 	}
+
+	public function validaLogin(){
+		$emailLogin= $this->input->post('email');
+		$senhaLogin = $this->input->post('senha');
+		echo "<script>console.log(\"controller\")</script>";
+
+		var_dump([$emailLogin, $senhaLogin]);
+	}
 }

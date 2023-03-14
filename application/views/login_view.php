@@ -20,6 +20,10 @@
 	<!-- Custom styles for this template-->
 	<link href="vendor/assets/css/sb-admin-2.min.css" rel="stylesheet">
 
+	<script
+	src="https://code.jquery.com/jquery-3.6.4.js"
+	integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+	crossorigin="anonymous"></script>
 </head>
 
 <body class="bg-gradient-primary">
@@ -44,30 +48,17 @@
 								<form class="user">
 									<div class="form-group">
 										<input type="email" class="form-control form-control-user"
-											   id="exampleInputEmail" aria-describedby="emailHelp"
+											   id="inputEmail" aria-describedby="emailHelp"
 											   placeholder="Enter Email Address...">
 									</div>
 									<div class="form-group">
 										<input type="password" class="form-control form-control-user"
-											   id="exampleInputPassword" placeholder="Password">
+											   id="inputSenha" placeholder="Password">
 									</div>
-									<div class="form-group">
-										<div class="custom-control custom-checkbox small">
-											<input type="checkbox" class="custom-control-input" id="customCheck">
-											<label class="custom-control-label" for="customCheck">Remember
-												Me</label>
-										</div>
-									</div>
-									<a href="index.html" class="btn btn-primary btn-user btn-block">
+
+									<button type="button" href="<?php echo base_url('home')?>" class="btn btn-primary btn-user btn-block" id="btnLogin">
 										Login
-									</a>
-									<hr>
-									<a href="index.html" class="btn btn-google btn-user btn-block">
-										<i class="fab fa-google fa-fw"></i> Login with Google
-									</a>
-									<a href="index.html" class="btn btn-facebook btn-user btn-block">
-										<i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-									</a>
+									</button>
 								</form>
 								<hr>
 								<div class="text-center">
@@ -88,15 +79,41 @@
 
 </div>
 
+<script type="text/javascript">
+	var base = "<?= base_url('login')?>"
+
+	function limparCampos()
+	{
+		$('#inputEmail').val('');
+		$('#inputSenha').val('');
+	}
+
+	$('#btnLogin').on("click", function() {
+		var email = $('#inputEmail').val('kevinlima138@gmail.com');
+		var senha = $('#inputSenha').val('Marcelo11');
+
+
+		$.post(base + "/validaLogin", {
+				'email': email,
+				'senha':senha
+			},
+			function(retorno) {
+				alert(retorno.email);
+
+		});
+
+	});
+
+</script>
 <!-- Bootstrap core JavaScript-->
 <script src="<?php base_url('vendor/jquery/jquery.js')?>"></script>
-<script src="../vendor/bootstrap/js/bootstrap.bundle.js"></script>
+<script src="<?= base_url()?>/vendor/bootstrap/js/bootstrap.bundle.js"></script>
 
 <!-- Core plugin JavaScript-->
-<script src="vendor/jquery-easing/jquery.easing.js"></script>
+<script src="<?= base_url()?>vendor/jquery-easing/jquery.easing.js"></script>
 
 <!-- Custom scripts for all pages-->
-<script src="vendor/assets/js/sb-admin-2.js"></script>
+<script src="<?= base_url()?>vendor/assets/js/sb-admin-2.js"></script>
 
 </body>
 
