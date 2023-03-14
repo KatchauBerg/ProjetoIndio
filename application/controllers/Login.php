@@ -8,10 +8,22 @@ class Login extends CI_Controller {
 	}
 
 	public function validaLogin(){
-		$emailLogin= $this->input->post('email');
-		$senhaLogin = $this->input->post('senha');
-		echo "<script>console.log(\"controller\")</script>";
 
-		var_dump([$emailLogin, $senhaLogin]);
+		$emailLogin = $this->input->post('email');
+		$senhaLogin = $this->input->post('senha');
+
+		var_dump([$emailLogin, $senhaLogin]); exit;
+
+		$html = "";
+		if(!empty($emailLogin) && !empty($senhaLogin))
+		{
+			$html .= 'Sucesso';
+		}
+		else
+		{
+			$html .= 'Erro';
+		}
+
+		return $html;
 	}
 }

@@ -56,7 +56,7 @@
 											   id="inputSenha" placeholder="Password">
 									</div>
 
-									<button type="button" href="<?php echo base_url('home')?>" class="btn btn-primary btn-user btn-block" id="btnLogin">
+									<button type="button" class="btn btn-primary btn-user btn-block" id="btnLogin">
 										Login
 									</button>
 								</form>
@@ -79,34 +79,47 @@
 
 </div>
 
+<!-- Bootstrap core JavaScript-->
+<script src="<?php base_url('vendor/jquery/jquery.js')?>"></script>
 <script type="text/javascript">
 	var base = "<?= base_url('login')?>"
 
-	function limparCampos()
-	{
-		$('#inputEmail').val('');
-		$('#inputSenha').val('');
-	}
 
-	$('#btnLogin').on("click", function() {
-		var email = $('#inputEmail').val('kevinlima138@gmail.com');
-		var senha = $('#inputSenha').val('Marcelo11');
+	$(document).ready(function () {
 
+		$('#btnLogin').on("click", function () {
 
-		$.post(base + "/validaLogin", {
-				'email': email,
-				'senha':senha
-			},
-			function(retorno) {
-				alert(retorno.email);
+			var email = $('#inputEmail').val();
+			var senha = $('#inputSenha').val();
 
+			$.post(base + "/validaLogin", {
+				email,
+				senha
+			}, function (retorno) {
+
+				Swal.fire(
+					'Bem-Vindo!!',
+					'Login Realizado com Sucesso!',
+					'success'
+				)
+				//window.location.href = "<?php //echo base_url('home')?>//";
+			}).fail(function(){
+				Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: 'Something went wrong!',
+					footer: '<a href="">Why do I have this issue?</a>'
+				})
+			});
 		});
 
 	});
 
 </script>
-<!-- Bootstrap core JavaScript-->
-<script src="<?php base_url('vendor/jquery/jquery.js')?>"></script>
+
+<!--Sweet Alert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script src="<?= base_url()?>/vendor/bootstrap/js/bootstrap.bundle.js"></script>
 
 <!-- Core plugin JavaScript-->
