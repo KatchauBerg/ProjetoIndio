@@ -43,10 +43,6 @@
 										   placeholder="Nome">
 								</div>
 								<div class="col-sm-6">
-									<input type="text" class="form-control form-control-user" id="inputSobreNome"
-										   placeholder="Sobrenome">
-								</div>
-								<div class="col-sm-6">
 									<input type="text" class="form-control form-control-user" id="inputCpf"
 										   placeholder="Cpf">
 								</div>
@@ -65,7 +61,7 @@
 										   id="inputSenhaNovamente" placeholder="Repita sua senha">
 								</div>
 							</div>
-							<button type="button" class="btn btn-primary btn-user btn-block" id = "btnCadastra">
+							<button type="button" class="btn btn-primary btn-user btn-block" id = "btnCadastro">
 								Register Account
 							</button>
 
@@ -85,19 +81,20 @@
 
 </div>
 
+
+<script src="<?php base_url()?>vendor/jquery/jquery.js"></script>
 <script type="text/javascript">
 	var base = "<?= base_url('cadastro')?>"
 
 	$(document).ready(function () {
 
-		$('#btnCadastra').on("click", function () {
+		$('#btnCadastro').on("click", function () {
 
 			var email = $('#inputEmail').val();
 			var senha = $('#inputSenha').val();
 			var repeteSenha = $('#inputSenhaNovamente').val();
 			var cpf =$('#inputCpf').val();
 			var nome =$('#inputNome').val();
-			var sobreNome =$('#inputSobreNome').val();
 
 			$.post(base + "/registraUsuario", {
 				email,
@@ -105,15 +102,14 @@
 				repeteSenha,
 				cpf,
 				nome,
-				sobreNome
 			}, function (retorno) {
-
+				alert(retorno)
 				Swal.fire(
-					'Bem-Vindo!!',
-					'Login Realizado com Sucesso!',
+					'Sucesso',
+					'Cadastro Realizado com Sucesso!',
 					'success'
 				)
-				window.location.href = "<?php echo base_url('home')?>";
+				//window.location.href = "<?php //echo base_url('home')?>//"; <!-redireciona Pagina-->
 			}).fail(function(){
 				Swal.fire({
 					icon: 'error',
