@@ -102,7 +102,7 @@
 					'Login Realizado com Sucesso!',
 					'success'
 				)
-				//window.location.href = "<?php //echo base_url('home')?>//";
+				window.location.href = "<?php echo base_url('home')?>";
 			}).fail(function(){
 				Swal.fire({
 					icon: 'error',

@@ -12,18 +12,5 @@ class Login extends CI_Controller {
 		$emailLogin = $this->input->post('email');
 		$senhaLogin = $this->input->post('senha');
 
-		var_dump([$emailLogin, $senhaLogin]); exit;
-
-		$html = "";
-		if(!empty($emailLogin) && !empty($senhaLogin))
-		{
-			$html .= 'Sucesso';
-		}
-		else
-		{
-			$html .= 'Erro';
-		}
-
-		return $html;
 	}
 }
